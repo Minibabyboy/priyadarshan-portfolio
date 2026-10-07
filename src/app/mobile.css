@@ -739,3 +739,22 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* =========================================================
+   REAL MOBILE HERO NAME FIT FIX
+========================================================= */
+
+@media (max-width: 700px) {
+  .hero-name-two {
+    font-size: clamp(2.35rem, 11.7vw, 3.55rem);
+    letter-spacing: -0.075em;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-name-two {
+    font-size: 11.5vw;
+  }
+}
