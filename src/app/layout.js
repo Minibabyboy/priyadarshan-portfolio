@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://yogendram.dev"),
+  metadataBase: new URL("https://yogendram-portfolio.vercel.app"),
 
   title: {
     default: "Yogendram Priyadarshan | Web Designer & Developer",
