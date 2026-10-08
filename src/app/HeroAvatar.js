@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 
 export default function HeroAvatar() {
@@ -81,11 +82,15 @@ export default function HeroAvatar() {
           ref={avatarRef}
           className="hero-avatar-interactive"
         >
-          <img
+          <Image
             src="/avatar/yogendram-3d.png"
             alt="Priyadarshan Yogendram"
+            fill
+            priority
+            fetchPriority="high"
+            sizes="(max-width: 700px) 57vw, (max-width: 1200px) 27vw, 380px"
             className="hero-avatar-image"
-            draggable="false"
+            draggable={false}
           />
         </div>
       </div>
