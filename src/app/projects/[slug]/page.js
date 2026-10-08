@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
 import CaseStudyAnimations from "./CaseStudyAnimations";
 
 /* =========================================================
@@ -29,7 +30,12 @@ const projects = {
     approach:
       "I used a dark editorial direction, oversized typography, warm photography and carefully controlled spacing. The interface was designed around clear content hierarchy and responsive behaviour so the experience remains effective across desktop and mobile screens.",
 
-    technologies: ["NEXT.JS", "RESPONSIVE", "UI DESIGN", "UX"],
+    technologies: [
+      "NEXT.JS",
+      "RESPONSIVE",
+      "UI DESIGN",
+      "UX",
+    ],
 
     accent: "GREEN",
 
@@ -62,7 +68,12 @@ const projects = {
     approach:
       "The interface combines large imagery, focused typography, generous spacing and subtle motion. Content is organised to guide visitors naturally through the restaurant experience without overwhelming the page.",
 
-    technologies: ["NEXT.JS", "MOTION", "MOBILE FIRST", "UI/UX"],
+    technologies: [
+      "NEXT.JS",
+      "MOTION",
+      "MOBILE FIRST",
+      "UI/UX",
+    ],
 
     accent: "RED",
 
@@ -95,7 +106,12 @@ const projects = {
     approach:
       "The design uses strong product imagery, structured category navigation, responsive layouts and modern visual hierarchy. The goal was to make product discovery straightforward while building a recognisable digital identity for the store.",
 
-    technologies: ["NEXT.JS", "TAILWIND", "GSAP", "RESPONSIVE"],
+    technologies: [
+      "NEXT.JS",
+      "TAILWIND",
+      "GSAP",
+      "RESPONSIVE",
+    ],
 
     accent: "BLUE",
 
@@ -128,7 +144,7 @@ export function generateStaticParams() {
 }
 
 /* =========================================================
-   METADATA
+   SEO METADATA
 ========================================================= */
 
 export async function generateMetadata({ params }) {
@@ -138,13 +154,58 @@ export async function generateMetadata({ params }) {
 
   if (!project) {
     return {
-      title: "Project | Yogendram Priyadarshan",
+      title: "Project | Priyadarshan Yogendram",
+      description:
+        "Explore web design and development projects by Priyadarshan Yogendram.",
     };
   }
 
+  const url =
+    `https://priyadarshan-yogendram.vercel.app/projects/${slug}`;
+
+  const seoTitles = {
+    clippers:
+      "Clippers Barbershop Website Concept | Priyadarshan Yogendram",
+
+    "shoo-loong-kan":
+      "Shoo Loong Kan Restaurant Website Concept | Priyadarshan Yogendram",
+
+    "tropical-land":
+      "Tropical Land Aquatics Website | Priyadarshan Yogendram",
+  };
+
+  const title =
+    seoTitles[slug] ||
+    `${project.title} | Priyadarshan Yogendram`;
+
   return {
-    title: `${project.title} | Yogendram Priyadarshan`,
+    title,
     description: project.intro,
+
+    alternates: {
+      canonical: url,
+    },
+
+    openGraph: {
+      title,
+      description: project.intro,
+      url,
+      type: "website",
+      siteName: "Priyadarshan Yogendram",
+      images: [
+        {
+          url: project.image,
+          alt: `${project.title} website project by Priyadarshan Yogendram`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: project.intro,
+      images: [project.image],
+    },
   };
 }
 
@@ -164,13 +225,15 @@ export default async function ProjectPage({ params }) {
   const currentIndex = projectOrder.indexOf(slug);
 
   const nextSlug =
-    projectOrder[(currentIndex + 1) % projectOrder.length];
+    projectOrder[
+      (currentIndex + 1) % projectOrder.length
+    ];
 
   const nextProject = projects[nextSlug];
 
   return (
-  <main className="case-study">
-    <CaseStudyAnimations />
+    <main className="case-study">
+      <CaseStudyAnimations />
 
       {/* ===================================================
           TOP NAVIGATION
@@ -348,11 +411,13 @@ export default async function ProjectPage({ params }) {
             <p>{project.approach}</p>
 
             <div className="case-tech">
-              {project.technologies.map((technology) => (
-                <span key={technology}>
-                  {technology}
-                </span>
-              ))}
+              {project.technologies.map(
+                (technology) => (
+                  <span key={technology}>
+                    {technology}
+                  </span>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -377,24 +442,25 @@ export default async function ProjectPage({ params }) {
 
           <div>
             <p>
-              Every part of the experience was considered around
-              presentation, usability and a clear digital journey.
-              The objective was not simply to create a visually
-              attractive page, but to give the project a stronger
-              and more intentional online presence.
+              Every part of the experience was
+              considered around presentation,
+              usability and a clear digital journey.
+              The objective was not simply to create a
+              visually attractive page, but to give the
+              project a stronger and more intentional
+              online presence.
             </p>
 
             <div className="case-tech">
               {project.focus.map((item) => (
-                <span key={item}>
-                  {item}
-                </span>
+                <span key={item}>{item}</span>
               ))}
             </div>
           </div>
         </div>
       </section>
-            {/* ===================================================
+
+      {/* ===================================================
           LARGE DESIGN SHOWCASE
       =================================================== */}
 
@@ -418,7 +484,7 @@ export default async function ProjectPage({ params }) {
             </div>
 
             <small>
-              YOGENDRAM.DESIGN / {project.number}
+              PRIYADARSHAN.DESIGN / {project.number}
             </small>
           </div>
 
@@ -450,20 +516,24 @@ export default async function ProjectPage({ params }) {
 
           <div>
             <p>
-              The project combines visual design, responsive
-              development and thoughtful content structure to
-              create a consistent experience across different
-              screen sizes.
+              The project combines visual design,
+              responsive development and thoughtful
+              content structure to create a consistent
+              experience across different screen sizes.
             </p>
 
             <div className="case-tech">
               <span>{project.role}</span>
 
-              {project.technologies.map((technology) => (
-                <span key={`detail-${technology}`}>
-                  {technology}
-                </span>
-              ))}
+              {project.technologies.map(
+                (technology) => (
+                  <span
+                    key={`detail-${technology}`}
+                  >
+                    {technology}
+                  </span>
+                )
+              )}
             </div>
           </div>
         </div>
@@ -584,7 +654,7 @@ export default async function ProjectPage({ params }) {
         </div>
 
         <span>
-          YOGENDRAM PRIYADARSHAN
+          PRIYADARSHAN YOGENDRAM
         </span>
 
         <span>
