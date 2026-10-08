@@ -1,3 +1,4 @@
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./mobile.css";
@@ -15,43 +16,72 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://yogendram-portfolio.vercel.app"),
+  metadataBase: new URL("https://priyadarshan-yogendram.vercel.app"),
 
   title: {
-    default: "Yogendram Priyadarshan | Web Designer & Developer",
-    template: "%s | Yogendram Priyadarshan",
+    default:
+      "Priyadarshan Yogendram | Full-Stack Developer & Web Designer",
+    template: "%s | Priyadarshan Yogendram",
   },
 
   description:
-    "Portfolio of Yogendram Priyadarshan, a web designer and developer in Dubai creating modern, responsive and interactive digital experiences for businesses and brands.",
+    "Portfolio of Priyadarshan Yogendram, a full-stack developer, web designer, UI/UX designer and social media marketer creating modern, responsive and interactive digital experiences for businesses and brands worldwide.",
 
   keywords: [
-    "Yogendram Priyadarshan",
-    "Yogendram Portfolio",
-    "Web Designer Dubai",
-    "Web Developer Dubai",
-    "Dubai Web Designer",
-    "Dubai Web Developer",
+    "Priyadarshan Yogendram",
+    "Priyadarshan Yogendram Portfolio",
+    "Priyadarshan Portfolio",
+    "Full Stack Developer",
+    "Full Stack Web Developer",
+    "Web Developer",
+    "Web Designer",
+    "Freelance Web Developer",
+    "Freelance Web Designer",
     "Frontend Developer",
-    "Next.js Developer",
     "React Developer",
+    "Next.js Developer",
+    "JavaScript Developer",
     "UI UX Designer",
+    "UI Designer",
+    "UX Designer",
     "Responsive Web Design",
-    "Website Designer UAE",
+    "Website Development",
+    "Website Designer",
+    "Modern Website Design",
+    "Business Website Development",
+    "Ecommerce Website Development",
+    "Landing Page Designer",
+    "Digital Experience Designer",
+    "Social Media Marketing",
+    "Social Media Marketer",
+    "Digital Marketing",
+    "International Web Developer",
+    "International Web Designer",
+    "Remote Web Developer",
+    "Remote Web Designer",
   ],
 
   authors: [
     {
-      name: "Yogendram Priyadarshan",
+      name: "Priyadarshan Yogendram",
+      url: "https://priyadarshan-yogendram.vercel.app",
     },
   ],
 
-  creator: "Yogendram Priyadarshan",
-  publisher: "Yogendram Priyadarshan",
+  creator: "Priyadarshan Yogendram",
+  publisher: "Priyadarshan Yogendram",
 
   category: "technology",
 
-  applicationName: "Yogendram Priyadarshan Portfolio",
+  applicationName: "Priyadarshan Yogendram Portfolio",
+
+  alternates: {
+    canonical: "/",
+    languages: {
+      "en": "/",
+      "x-default": "/",
+    },
+  },
 
   formatDetection: {
     email: false,
@@ -74,21 +104,23 @@ export const metadata = {
 
   openGraph: {
     type: "website",
+    url: "https://priyadarshan-yogendram.vercel.app",
     locale: "en_US",
 
-    title: "Yogendram Priyadarshan | Web Designer & Developer",
+    title:
+      "Priyadarshan Yogendram | Full-Stack Developer & Web Designer",
 
     description:
-      "Web designer and developer in Dubai creating modern, responsive and interactive digital experiences.",
+      "Full-stack developer, web designer, UI/UX designer and social media marketer creating modern digital experiences for businesses and brands worldwide.",
 
-    siteName: "Yogendram Priyadarshan",
+    siteName: "Priyadarshan Yogendram",
 
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Yogendram Priyadarshan — Web Designer & Developer",
+        alt: "Priyadarshan Yogendram — Full-Stack Developer, Web Designer and UI/UX Designer",
       },
     ],
   },
@@ -96,10 +128,11 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Yogendram Priyadarshan | Web Designer & Developer",
+    title:
+      "Priyadarshan Yogendram | Full-Stack Developer & Web Designer",
 
     description:
-      "Web designer and developer in Dubai creating modern, responsive and interactive digital experiences.",
+      "Full-stack developer, web designer, UI/UX designer and social media marketer creating modern digital experiences for businesses and brands worldwide.",
 
     images: ["/og-image.png"],
   },

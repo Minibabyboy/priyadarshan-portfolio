@@ -6,6 +6,8 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import HeroAvatar from "./HeroAvatar";
+import "./avatar.css";
 
 /* =========================================================
    PROJECTS
@@ -118,8 +120,11 @@ function Magnetic({ children, className = "" }) {
 
     const rect = element.getBoundingClientRect();
 
-    const x = event.clientX - rect.left - rect.width / 2;
-    const y = event.clientY - rect.top - rect.height / 2;
+    const x =
+      event.clientX - rect.left - rect.width / 2;
+
+    const y =
+      event.clientY - rect.top - rect.height / 2;
 
     gsap.to(element, {
       x: x * 0.18,
@@ -337,151 +342,173 @@ export default function Home() {
          REVEAL HEADINGS
       =================================================== */
 
-      gsap.utils.toArray(".reveal-heading").forEach((heading) => {
-        gsap.from(heading, {
-          y: 90,
-          opacity: 0,
-          duration: 1.1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: heading,
-            start: "top 88%",
-          },
+      gsap.utils
+        .toArray(".reveal-heading")
+        .forEach((heading) => {
+          gsap.from(heading, {
+            y: 90,
+            opacity: 0,
+            duration: 1.1,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: heading,
+              start: "top 88%",
+            },
+          });
         });
-      });
 
       /* ===================================================
          PROJECT ANIMATIONS
       =================================================== */
 
-      gsap.utils.toArray(".project-card-v2").forEach((card) => {
-        const visual = card.querySelector(".project-visual-v2");
-        const browser = card.querySelector(".browser-v2");
+      gsap.utils
+        .toArray(".project-card-v2")
+        .forEach((card) => {
+          const visual =
+            card.querySelector(".project-visual-v2");
 
-        gsap.from(card, {
-          y: 100,
-          opacity: 0,
-          duration: 1.1,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 88%",
-          },
+          const browser =
+            card.querySelector(".browser-v2");
+
+          gsap.from(card, {
+            y: 100,
+            opacity: 0,
+            duration: 1.1,
+            ease: "power4.out",
+            scrollTrigger: {
+              trigger: card,
+              start: "top 88%",
+            },
+          });
+
+          if (visual) {
+            gsap.fromTo(
+              visual,
+              {
+                y: 70,
+              },
+              {
+                y: -50,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: 1.1,
+                },
+              }
+            );
+          }
+
+          if (browser) {
+            gsap.fromTo(
+              browser,
+              {
+                rotateX: 7,
+                rotateY: -10,
+              },
+              {
+                rotateX: -3,
+                rotateY: 5,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top bottom",
+                  end: "bottom top",
+                  scrub: 1.3,
+                },
+              }
+            );
+          }
         });
-
-        if (visual) {
-          gsap.fromTo(
-            visual,
-            {
-              y: 70,
-            },
-            {
-              y: -50,
-              ease: "none",
-              scrollTrigger: {
-                trigger: card,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.1,
-              },
-            }
-          );
-        }
-
-        if (browser) {
-          gsap.fromTo(
-            browser,
-            {
-              rotateX: 7,
-              rotateY: -10,
-            },
-            {
-              rotateX: -3,
-              rotateY: 5,
-              ease: "none",
-              scrollTrigger: {
-                trigger: card,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1.3,
-              },
-            }
-          );
-        }
-      });
 
       /* ===================================================
          PROJECT TECH + IMAGE ANIMATIONS
       =================================================== */
 
-      gsap.utils.toArray(".project-card-v2").forEach((card) => {
-        const tech = card.querySelectorAll(".project-tech-v3 span");
-        const indexLabel = card.querySelector(".project-v3-index");
-        const image = card.querySelector(".project-real-image");
+      gsap.utils
+        .toArray(".project-card-v2")
+        .forEach((card) => {
+          const tech =
+            card.querySelectorAll(
+              ".project-tech-v3 span"
+            );
 
-        if (tech.length) {
-          gsap.from(tech, {
-            y: 18,
-            opacity: 0,
-            duration: 0.55,
-            stagger: 0.08,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 72%",
-            },
-          });
-        }
+          const indexLabel =
+            card.querySelector(
+              ".project-v3-index"
+            );
 
-        if (indexLabel) {
-          gsap.to(indexLabel, {
-            y: -35,
-            ease: "none",
-            scrollTrigger: {
-              trigger: card,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: 1,
-            },
-          });
-        }
+          const image =
+            card.querySelector(
+              ".project-real-image"
+            );
 
-        if (image) {
-          gsap.fromTo(
-            image,
-            {
-              scale: 1.08,
-            },
-            {
-              scale: 1,
+          if (tech.length) {
+            gsap.from(tech, {
+              y: 18,
+              opacity: 0,
+              duration: 0.55,
+              stagger: 0.08,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: card,
+                start: "top 72%",
+              },
+            });
+          }
+
+          if (indexLabel) {
+            gsap.to(indexLabel, {
+              y: -35,
               ease: "none",
               scrollTrigger: {
                 trigger: card,
-                start: "top 90%",
-                end: "center 35%",
+                start: "top bottom",
+                end: "bottom top",
                 scrub: 1,
               },
-            }
-          );
-        }
-      });
-      
-            /* ===================================================
+            });
+          }
+
+          if (image) {
+            gsap.fromTo(
+              image,
+              {
+                scale: 1.08,
+              },
+              {
+                scale: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: card,
+                  start: "top 90%",
+                  end: "center 35%",
+                  scrub: 1,
+                },
+              }
+            );
+          }
+        });
+
+      /* ===================================================
          SERVICE ANIMATIONS
       =================================================== */
 
-      gsap.utils.toArray(".service-v2").forEach((service) => {
-        gsap.from(service, {
-          x: -60,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: service,
-            start: "top 90%",
-          },
+      gsap.utils
+        .toArray(".service-v2")
+        .forEach((service) => {
+          gsap.from(service, {
+            x: -60,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: service,
+              start: "top 90%",
+            },
+          });
         });
-      });
 
       /* ===================================================
          CONTACT MARQUEE
@@ -506,11 +533,16 @@ export default function Home() {
 
       lenis.destroy();
 
-      window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener(
+        "mousemove",
+        moveCursor
+      );
 
       ctx.revert();
 
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach(
+        (trigger) => trigger.kill()
+      );
     };
   }, []);
 
@@ -547,7 +579,7 @@ export default function Home() {
   ======================================================= */
 
   return (
-    <main ref={rootRef} className="portfolio-v2">
+        <main ref={rootRef} className="portfolio-v2">
       {/* CUSTOM CURSOR */}
 
       <div ref={cursorRef} className="custom-cursor">
@@ -572,11 +604,8 @@ export default function Home() {
 
           <div className="nav-center">
             <a href="#about">About</a>
-
             <a href="#work">Work</a>
-
             <a href="#services">Services</a>
-
             <a href="#contact">Contact</a>
           </div>
 
@@ -593,11 +622,9 @@ export default function Home() {
 
       <section id="home" ref={heroRef} className="hero-v2">
         <div className="tech-grid" />
-
         <div className="hero-scanline" />
 
         <div className="hero-orb hero-orb-one" />
-
         <div className="hero-orb hero-orb-two" />
 
         <div className="hero-eyebrow">
@@ -610,19 +637,27 @@ export default function Home() {
           <span>MALTA</span>
         </div>
 
+        {/* NAME */}
+
         <div className="hero-name">
           <div className="hero-word-mask">
             <div className="hero-word-inner hero-name-one">
-              YOGENDRAM
+              PRIYADARSHAN
             </div>
           </div>
 
           <div className="hero-word-mask">
             <div className="hero-word-inner hero-name-two outline-v2">
-              PRIYADARSHAN
+              YOGENDRAM
             </div>
           </div>
         </div>
+
+        {/* 3D AVATAR */}
+
+        <HeroAvatar />
+
+        {/* HERO BOTTOM */}
 
         <div className="hero-footer-v2">
           <p className="hero-description">
@@ -639,9 +674,7 @@ export default function Home() {
               onMouseLeave={cursorLeave}
             >
               <span>Explore</span>
-
               <span>my work</span>
-
               <strong>↘</strong>
             </a>
           </Magnetic>
@@ -665,15 +698,15 @@ export default function Home() {
       <section id="about" className="about-v2 section-v2">
         <div className="section-topline">
           <span className="section-number">01</span>
-
           <span>ABOUT</span>
-
           <span>WHO I AM</span>
         </div>
 
         <div className="about-layout">
           <div className="about-side">
-            <span className="vertical-text">DIGITAL CREATIVE</span>
+            <span className="vertical-text">
+              DIGITAL CREATIVE
+            </span>
           </div>
 
           <div className="about-main">
@@ -689,22 +722,27 @@ export default function Home() {
 
             <div className="about-copy-grid">
               <div>
-                <span className="mini-title">MY APPROACH</span>
+                <span className="mini-title">
+                  MY APPROACH
+                </span>
 
                 <p>
-                  I combine clean visual design, modern development and
-                  thoughtful interaction to create websites that feel
-                  professional and memorable.
+                  I combine clean visual design, modern
+                  development and thoughtful interaction to
+                  create websites that feel professional and
+                  memorable.
                 </p>
               </div>
 
               <div>
-                <span className="mini-title">THE GOAL</span>
+                <span className="mini-title">
+                  THE GOAL
+                </span>
 
                 <p>
-                  Every website should have a purpose — communicate clearly,
-                  build trust and turn attention into meaningful business
-                  results.
+                  Every website should have a purpose —
+                  communicate clearly, build trust and turn
+                  attention into meaningful business results.
                 </p>
               </div>
             </div>
@@ -736,9 +774,7 @@ export default function Home() {
       <section id="work" className="work-v2 section-v2">
         <div className="section-topline">
           <span className="section-number">02</span>
-
           <span>SELECTED WORK</span>
-
           <span>2026</span>
         </div>
 
@@ -750,8 +786,8 @@ export default function Home() {
           </h2>
 
           <p>
-            Selected digital experiences and concept projects across
-            hospitality, retail and service brands.
+            Selected digital experiences and concept projects
+            across hospitality, retail and service brands.
           </p>
         </div>
 
@@ -793,7 +829,6 @@ export default function Home() {
                   </div>
 
                   <div className="project-circle circle-one" />
-
                   <div className="project-circle circle-two" />
 
                   {/* REAL WEBSITE PREVIEW */}
@@ -807,7 +842,8 @@ export default function Home() {
                       </div>
 
                       <small>
-                        yogendram.design / project-{project.number}
+                        priyadarshan.design / project-
+                        {project.number}
                       </small>
                     </div>
 
@@ -865,7 +901,6 @@ export default function Home() {
               <div className="project-bottom-v2">
                 <div>
                   <h3>{project.title}</h3>
-
                   <span>{project.subtitle}</span>
                 </div>
 
@@ -912,9 +947,7 @@ export default function Home() {
       >
         <div className="section-topline dark-line">
           <span className="section-number">03</span>
-
           <span>SERVICES</span>
-
           <span>WHAT I DO</span>
         </div>
 
@@ -957,9 +990,7 @@ export default function Home() {
       <section className="technology-v2 section-v2">
         <div className="section-topline">
           <span className="section-number">04</span>
-
           <span>TECHNOLOGY</span>
-
           <span>THE STACK</span>
         </div>
 
@@ -972,8 +1003,9 @@ export default function Home() {
 
           <div className="technology-right">
             <p>
-              Modern tools combined with thoughtful design to build fast,
-              responsive and interactive digital experiences.
+              Modern tools combined with thoughtful design
+              to build fast, responsive and interactive
+              digital experiences.
             </p>
 
             <div className="skills-v2">
@@ -1033,7 +1065,6 @@ export default function Home() {
         <div className="contact-inner-v2">
           <div className="contact-small-v2">
             <span>05</span>
-
             <span>LET&apos;S TALK</span>
           </div>
 
@@ -1058,9 +1089,7 @@ export default function Home() {
                 onMouseLeave={cursorLeave}
               >
                 <span>START A</span>
-
                 <span>PROJECT</span>
-
                 <strong>↗</strong>
               </a>
             </Magnetic>
@@ -1090,7 +1119,9 @@ export default function Home() {
             <div>
               <strong>YP.</strong>
 
-              <span>WEB DESIGNER &amp; DEVELOPER</span>
+              <span>
+                WEB DESIGNER &amp; DEVELOPER
+              </span>
             </div>
 
             <div>
@@ -1100,7 +1131,7 @@ export default function Home() {
             </div>
 
             <span>
-              © 2026 YOGENDRAM PRIYADARSHAN
+              © 2026 PRIYADARSHAN YOGENDRAM
             </span>
           </footer>
         </div>

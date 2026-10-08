@@ -1,0 +1,662 @@
+/* =========================================================
+   PRIYADARSHAN YOGENDRAM
+   HERO AVATAR — FINAL CLEAN VERSION
+========================================================= */
+
+
+/* =========================================================
+   DESKTOP AVATAR
+========================================================= */
+
+.hero-avatar-stage {
+  position: absolute;
+  left: 50%;
+  top: 53.5%;
+
+  width: min(25vw, 380px);
+  height: min(32vw, 470px);
+
+  transform: translate(-50%, -50%);
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NEON GLOW
+========================================================= */
+
+.hero-avatar-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 46%;
+
+  width: 85%;
+  height: 72%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(156, 255, 0, 0.14) 0%,
+    rgba(156, 255, 0, 0.07) 34%,
+    rgba(156, 255, 0, 0.02) 58%,
+    transparent 75%
+  );
+
+  filter: blur(35px);
+
+  opacity: 0.7;
+
+  pointer-events: none;
+
+  animation: avatarGlowPulse 5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   FLOATING CONTAINER
+========================================================= */
+
+.hero-avatar-float {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  animation: avatarFloat 5.5s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   MOUSE INTERACTION
+========================================================= */
+
+.hero-avatar-interactive {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform-style: preserve-3d;
+  transform-origin: center center;
+
+  will-change: transform;
+
+  pointer-events: auto;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   AVATAR IMAGE
+========================================================= */
+
+.hero-avatar-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  user-select: none;
+  -webkit-user-drag: none;
+
+  transform: translateZ(20px);
+
+  filter:
+    drop-shadow(0 22px 28px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 13px rgba(156, 255, 0, 0.1));
+}
+
+
+/* =========================================================
+   PROFESSIONAL ROLE
+========================================================= */
+
+.hero-avatar-role {
+  position: absolute;
+
+  left: 50%;
+  bottom: -28px;
+
+  transform: translateX(-50%);
+
+  width: max-content;
+  max-width: 90vw;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  white-space: nowrap;
+
+  color: rgba(242, 242, 237, 0.72);
+
+  font-size: 8px;
+  font-weight: 600;
+
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  pointer-events: none;
+}
+
+.hero-avatar-role i {
+  color: #9cff00;
+
+  font-style: normal;
+
+  opacity: 0.95;
+}
+
+
+/* Hide fourth role */
+
+.hero-avatar-role span:last-child {
+  display: none;
+}
+
+
+/* =========================================================
+   REMOVE OLD SCROLL INDICATOR
+========================================================= */
+
+.hero-scroll {
+  display: none !important;
+}
+
+
+/* =========================================================
+   FLOAT ANIMATION
+========================================================= */
+
+@keyframes avatarFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+
+/* =========================================================
+   GLOW ANIMATION
+========================================================= */
+
+@keyframes avatarGlowPulse {
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.96);
+  }
+
+  50% {
+    opacity: 0.75;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.04);
+  }
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .hero-avatar-stage {
+    top: 53%;
+
+    width: min(27vw, 350px);
+    height: min(35vw, 430px);
+  }
+
+  .hero-avatar-role {
+    bottom: -24px;
+
+    gap: 8px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.11em;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero-avatar-stage {
+    top: 52%;
+
+    width: min(37vw, 330px);
+    height: min(45vw, 400px);
+  }
+
+  .hero-avatar-glow {
+    width: 90%;
+    height: 75%;
+  }
+
+  .hero-avatar-role {
+    bottom: -20px;
+
+    gap: 6px;
+
+    font-size: 6px;
+
+    letter-spacing: 0.09em;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   Optimized for 390 x 844
+========================================================= */
+
+@media (max-width: 700px) {
+
+  /* HERO */
+
+  .hero-v2 {
+    min-height: 100svh;
+
+    padding-top: 82px;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 24px;
+
+    overflow: hidden;
+  }
+
+
+  /* TOP INFORMATION */
+
+  .hero-eyebrow {
+    top: 82px;
+
+    left: 18px;
+    right: 18px;
+
+    width: auto;
+
+    font-size: 6px;
+
+    letter-spacing: 0.16em;
+  }
+
+  .hero-coordinate {
+    display: none !important;
+  }
+
+
+  /* =======================================================
+     NAME
+  ======================================================= */
+
+  .hero-name {
+    position: absolute;
+
+    left: 50%;
+    top: 45%;
+
+    width: calc(100% - 16px);
+    max-width: none;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 2;
+  }
+
+  .hero-word-mask {
+    width: 100%;
+
+    overflow: visible;
+  }
+
+  .hero-word-inner {
+    width: 100%;
+    max-width: 100%;
+
+    text-align: center;
+
+    white-space: nowrap;
+  }
+
+
+  /* PRIYADARSHAN */
+
+  .hero-name-one {
+    font-size: 12.4vw !important;
+
+    line-height: 0.95;
+
+    letter-spacing: -0.07em !important;
+  }
+
+
+  /* YOGENDRAM */
+
+  .hero-name-two {
+    margin-top: 3px;
+
+    font-size: 14vw !important;
+
+    line-height: 0.92;
+
+    letter-spacing: -0.06em !important;
+  }
+
+
+  /* =======================================================
+     AVATAR
+  ======================================================= */
+
+  .hero-avatar-stage {
+    left: 50%;
+    top: 48%;
+
+    width: 57vw;
+    height: 65vw;
+
+    max-width: 220px;
+    max-height: 255px;
+
+    transform: translate(-50%, -50%);
+
+    z-index: 4;
+  }
+
+
+  /* GLOW */
+
+  .hero-avatar-glow {
+    top: 48%;
+
+    width: 100%;
+    height: 85%;
+
+    filter: blur(22px);
+
+    opacity: 0.48;
+  }
+
+
+  /* FLOAT */
+
+  .hero-avatar-float {
+    animation-duration: 6s;
+  }
+
+
+  /* IMAGE */
+
+  .hero-avatar-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+
+  /* =======================================================
+     PROFESSIONAL ROLE
+  ======================================================= */
+
+  .hero-avatar-role {
+    left: 50%;
+    bottom: -27px;
+
+    width: 94vw;
+    max-width: 370px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-wrap: nowrap;
+
+    gap: 5px;
+
+    font-size: 6px;
+    font-weight: 600;
+
+    line-height: 1.4;
+
+    letter-spacing: 0.045em;
+
+    white-space: nowrap;
+
+    color: rgba(242, 242, 237, 0.76);
+  }
+
+  .hero-avatar-role i {
+    display: inline;
+
+    color: #9cff00;
+
+    opacity: 0.9;
+  }
+
+  .hero-avatar-role span:last-child {
+    display: none;
+  }
+
+
+  /* =======================================================
+     BOTTOM CONTENT
+  ======================================================= */
+
+  .hero-footer-v2 {
+    position: absolute;
+
+    left: 20px;
+    right: 20px;
+
+    /* Moved upward to use empty mobile space */
+    bottom: 125px;
+
+    width: auto;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 14px;
+
+    z-index: 6;
+  }
+
+
+  /* DESCRIPTION */
+
+  .hero-description {
+    width: 185px !important;
+    max-width: 185px !important;
+
+    margin: 0;
+
+    font-size: 10px !important;
+
+    line-height: 1.55 !important;
+
+    color: rgba(242, 242, 237, 0.7);
+  }
+
+  .hero-description br {
+    display: none;
+  }
+
+
+  /* =======================================================
+     EXPLORE BUTTON
+  ======================================================= */
+
+  .hero-cta-wrap {
+    flex-shrink: 0;
+  }
+
+  .hero-cta {
+    width: 82px !important;
+    height: 82px !important;
+
+    font-size: 7px;
+  }
+
+
+  /* =======================================================
+     PAGE NUMBER
+  ======================================================= */
+
+  .hero-index {
+    right: 18px;
+    bottom: 14px;
+
+    font-size: 6px;
+  }
+
+
+  /* =======================================================
+     BACKGROUND
+  ======================================================= */
+
+  .hero-orb-one,
+  .hero-orb-two {
+    opacity: 0.4;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .hero-name {
+    top: 44.5%;
+
+    width: calc(100% - 14px);
+  }
+
+  .hero-name-one {
+    font-size: 11.8vw !important;
+  }
+
+  .hero-name-two {
+    font-size: 13.5vw !important;
+  }
+
+  .hero-avatar-stage {
+    top: 47.5%;
+
+    width: 54vw;
+    height: 63vw;
+
+    max-width: 205px;
+    max-height: 240px;
+  }
+
+  .hero-avatar-role {
+    bottom: -25px;
+
+    gap: 4px;
+
+    font-size: 5.3px;
+
+    letter-spacing: 0.035em;
+  }
+
+  .hero-footer-v2 {
+    left: 18px;
+    right: 18px;
+
+    bottom: 105px;
+
+    gap: 10px;
+  }
+
+  .hero-description {
+    width: 160px !important;
+    max-width: 160px !important;
+
+    font-size: 9px !important;
+  }
+
+  .hero-cta {
+    width: 78px !important;
+    height: 78px !important;
+  }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  .hero-avatar-interactive {
+    pointer-events: none;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-avatar-float,
+  .hero-avatar-glow {
+    animation: none !important;
+  }
+
+  .hero-avatar-interactive {
+    transform: none !important;
+  }
+}
