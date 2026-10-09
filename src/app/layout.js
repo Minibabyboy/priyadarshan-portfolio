@@ -1,4 +1,3 @@
-
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./mobile.css";
@@ -16,7 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://priyadarshan-yogendram.vercel.app"),
+  metadataBase: new URL(
+    "https://priyadarshan-yogendram.vercel.app"
+  ),
 
   title: {
     default:
@@ -73,12 +74,13 @@ export const metadata = {
 
   category: "technology",
 
-  applicationName: "Priyadarshan Yogendram Portfolio",
+  applicationName:
+    "Priyadarshan Yogendram Portfolio",
 
   alternates: {
     canonical: "/",
     languages: {
-      "en": "/",
+      en: "/",
       "x-default": "/",
     },
   },
@@ -143,12 +145,104 @@ export const metadata = {
   },
 };
 
+/* =========================================================
+   STRUCTURED DATA
+========================================================= */
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+
+  "@id":
+    "https://priyadarshan-yogendram.vercel.app/#person",
+
+  name: "Priyadarshan Yogendram",
+
+  url:
+    "https://priyadarshan-yogendram.vercel.app",
+
+  image:
+    "https://priyadarshan-yogendram.vercel.app/og-image.png",
+
+  jobTitle: [
+    "Full-Stack Developer",
+    "Web Designer",
+    "UI/UX Designer",
+  ],
+
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "MT",
+  },
+
+  knowsAbout: [
+    "Web Design",
+    "Web Development",
+    "Full-Stack Development",
+    "Front-End Development",
+    "UI Design",
+    "UX Design",
+    "Responsive Web Design",
+    "Next.js",
+    "React",
+    "JavaScript",
+    "HTML",
+    "CSS",
+    "Tailwind CSS",
+    "GSAP",
+    "Framer Motion",
+    "Social Media Marketing",
+    "Digital Marketing",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+
+  "@id":
+    "https://priyadarshan-yogendram.vercel.app/#website",
+
+  url:
+    "https://priyadarshan-yogendram.vercel.app",
+
+  name: "Priyadarshan Yogendram",
+
+  description:
+    "Portfolio of Priyadarshan Yogendram, a full-stack developer, web designer and UI/UX designer creating modern digital experiences.",
+
+  inLanguage: "en",
+
+  publisher: {
+    "@id":
+      "https://priyadarshan-yogendram.vercel.app/#person",
+  },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
+        {/* PERSON STRUCTURED DATA */}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personSchema),
+          }}
+        />
+
+        {/* WEBSITE STRUCTURED DATA */}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+
         {children}
       </body>
     </html>
